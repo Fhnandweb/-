@@ -17,6 +17,10 @@ import 'muse-ui/dist/muse-ui.css';
 import App from './App'
 import router from './router'
 import navbar from './components/tabbar/Navbar.vue'
+import totop from './components/tabbar/GoTop.vue'
+
+import $ from 'jquery'
+
 Vue.config.productionTip = false
 
 
@@ -29,6 +33,39 @@ import 'mint-ui/lib/style.css'
 Vue.component(
   'mnav', navbar
 )
+
+Vue.component(
+  'totop', totop
+)
+
+
+
+Vue.filter('mfixed', function (value) {
+  return value.toFixed(2)
+})
+Vue.filter('textFilter', function (value) {
+  return value.slice(0, 100) + "..."
+})
+
+Vue.directive('mcolor', {
+  bind(el, binding, vnode) {
+    if (binding.value == "red") {
+      el.style.color = "#f00"
+      el.style.fontSize = "12px"
+    } else if (binding.value == 'size') {
+      el.style.fontSize = "20px"
+      el.style.fontWeight = "bold"
+    }
+
+    if (binding.arg == "bgr") {
+      el.style.backgroundColor = "#ff6666"
+      el.style.color = "#fff"
+      el.style.padding = "10px 15px"
+    }
+  }
+})
+
+
 
 
 /* eslint-disable no-new */

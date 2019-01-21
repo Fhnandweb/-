@@ -9,6 +9,7 @@
       <mt-button icon="more"
                  slot="right"></mt-button>
     </mt-header>
+    <p style="margin-top:48px"></p>
   </div>
 </template>
 
@@ -31,6 +32,10 @@ export default {
 <style scoped>
 .mint-header {
   height: 46px;
+  width: 100%;
   background: rgb(255, 91, 72);
+  position: fixed;
+  top: 0;
+  z-index: 199;
 }
 </style>

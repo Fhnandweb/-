@@ -1,13 +1,15 @@
 <template>
   <div class="goods-detail">
     <mnav></mnav>
-    <!-- 商品展示 -->
-    <mu-carousel transition="fade">
-      <mu-carousel-item v-for="item in list"
-                        :key="item.id">
-        <img :src="item">
-      </mu-carousel-item>
-    </mu-carousel>
+    <!-- 轮播和简介 -->
+    <showgoods />
+    <!--  -->
+    <spec />
+    <!--  -->
+    <comment />
+    <!--  详细介绍-->
+    <moredes />
+    <!--  -->
     <!-- 底部 -->
     <van-goods-action>
       <van-goods-action-mini-btn icon="chat-o"
@@ -21,37 +23,65 @@
       <van-goods-action-big-btn primary
                                 text="立即购买" />
     </van-goods-action>
+    <!--  -->
+    <totop />
+
   </div>
 </template>
 
 <script>
-import pic0 from '../../assets/imgs/details/1-0.jpg';
-import pic1 from '../../assets/imgs/details/1-1.jpg';
-import pic2 from '../../assets/imgs/details/1-2.jpg';
-import pic3 from '../../assets/imgs/details/1-3.jpg';
+//
+import showgoods from './ShowGoods.vue'
+import spec from './Spec.vue'
+import comment from './GoodComment.vue'
+import moredes from './MoreDetails.vue'
 export default {
   name: 'detail',
   data () {
     return {
-      list: [
-        pic0,
-        pic1,
-        pic2,
-        pic3
-      ]
     }
+  },
+  methods: {
+
+  },
+  components: {
+    showgoods,
+    spec,
+    comment,
+    moredes
   }
 }
 </script>
 
 <style scoped>
-.mu-carousel {
-  height: 360px;
-}
-.mu-carousel-item {
+.msale,
+.sl-addr,
+.s-addr,
+.comment,
+.content {
   width: 100%;
+  padding: 10px 10px;
 }
-.mu-carousel-item > img {
-  height: 100%;
+hr {
+  background: #ddd;
+  height: 1px;
+  border: 0;
+}
+h3,
+h4 {
+  margin: 5px 0;
+  padding: 0 8px;
+}
+h3.bigtitle {
+  font-size: 18px;
+}
+.h3-text {
+  color: #f00;
+}
+html {
+  background: #aaa;
+}
+.van-goods-action {
+  z-index: 100;
 }
 </style>

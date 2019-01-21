@@ -1,7 +1,7 @@
 <template>
   <div class="app-setting">
     <mnav></mnav>
-    <p class="set-top"></p>
+
     <mt-cell title="账号与安全"
              to="//github.com"
              is-link>
@@ -50,7 +50,7 @@ export default {
   padding: 30px 0;
 }
 .set-top {
-  margin-top: 20px;
+  /* margin-top: 20px; */
 }
 .mint-cell {
   border-bottom: 1px solid #eee;

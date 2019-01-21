@@ -13,37 +13,39 @@
       </ul>
     </div>
     <!--  -->
-    <h3>经典书籍
-      <van-icon name="fire"
-                color="red" />
-    </h3>
-    <!--  -->
-    <hotbook></hotbook>
-    <!--  -->
+    <p style="margin-top:46px"></p>
+    <!--下拉刷新  -->
+    <van-pull-refresh v-model="isLoading"
+                      @refresh="onRefresh">
+      <!--  -->
+      <h3>经典书籍
+        <van-icon name="fire"
+                  color="red" />
+      </h3>
 
+      <!--  -->
+      <hotbook />
+      <!--  -->
+    </van-pull-refresh>
     <!--  -->
     <h3>经典影视
       <van-icon name="fire"
                 color="red" />
     </h3>
     <!--  -->
-    <hotmovie></hotmovie>
+    <hotmovie />
     <!--  -->
     <h3 style="border:0">读来看去</h3>
     <!--  -->
-    <bookbtn></bookbtn>
+    <bookbtn />
     <!--  -->
     <h3>分类浏览</h3>
     <!--  -->
-    <hfoot></hfoot>
+    <hfoot />
     <!--  -->
-    <div class="toTop">
-      <mu-button fab
-                 color="rgba(255,0,0,.6)">
-        <van-icon name="arrow-up"
-                  size="25px" />
-      </mu-button>
-    </div>
+    <totop />
+    <!--  -->
+
     <!--  -->
   </div>
 </template>
@@ -54,27 +56,28 @@ import hotmovie from './tabbar/Hotmovie.vue'
 import hfoot from './tabbar/Homefoot.vue'
 import bookbtn from './tabbar/Buttnbook.vue'
 // 
-// import { goTop } from '../lib/js/method.js'
 export default {
+
   name: 'Home',
   data () {
     return {
-
+      isLoading: false
     }
   },
   methods: {
-    goTop () {
-      window.onscroll = function () {
-        var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-        console.log(scrollTop);
-      }
+    onRefresh () {
+      setTimeout(() => {
+        this.$toast('刷新成功');
+        this.isLoading = false;
+      }, 500);
     }
+
   },
   created () {
-    // this.goTop()
+
   },
   mounted () {
-    this.goTop()
+
   },
   components: {
     hotbook,
@@ -88,8 +91,9 @@ export default {
 <style scoped>
 .toTop {
   position: fixed;
-  bottom: 120px;
+  bottom: 140px;
   right: 10px;
+  opacity: 0;
 }
 /*  */
 .app-home {
@@ -104,10 +108,14 @@ export default {
 }
 .mnav {
   height: 46px;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   background: rgb(255, 91, 72);
   line-height: 46px;
+  position: fixed;
+  top: 0;
+  z-index: 20;
 }
 .mnav-left {
   padding-left: 15px;
