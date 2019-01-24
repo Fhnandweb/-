@@ -16,14 +16,28 @@ import 'muse-ui/dist/muse-ui.css';
 
 import App from './App'
 import router from './router'
+import store from './vuex/store'
 import navbar from './components/tabbar/Navbar.vue'
 import totop from './components/tabbar/GoTop.vue'
+import tohome from './components/tabbar/GoHome.vue'
 
 import $ from 'jquery'
+
+
+
+import axios from 'axios'
+
+Vue.prototype.axios = axios;
+axios.defaults.baseURL = 'http://148.70.210.101:3003'
+// axios.defaults.baseURL = 'http://localhost:3003'
+
 
 Vue.config.productionTip = false
 
 
+
+
+// 
 Vue.use(Vant);
 Vue.use(Mint);
 Vue.use(MuseUI);
@@ -38,13 +52,16 @@ Vue.component(
   'totop', totop
 )
 
+Vue.component(
+  'tohome', tohome
+)
 
 
 Vue.filter('mfixed', function (value) {
   return value.toFixed(2)
 })
 Vue.filter('textFilter', function (value) {
-  return value.slice(0, 100) + "..."
+  return value.slice(0, 70) + "..."
 })
 
 Vue.directive('mcolor', {
@@ -72,6 +89,7 @@ Vue.directive('mcolor', {
 new Vue({
   el: '#app',
   router,
+  store,
   components: {
     App
   },

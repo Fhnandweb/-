@@ -25,7 +25,7 @@
     </van-goods-action>
     <!--  -->
     <totop />
-
+    <tohome />
   </div>
 </template>
 

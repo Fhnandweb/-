@@ -5,7 +5,7 @@
            v-for="item in moveList">
         <p class="mcard-h">{{item.title}}</p>
         <div class="mcard-b">
-          <router-link to="/detail/3">
+          <router-link to="/cinecism/3">
             <img :src="item.image"
                  alt="">
           </router-link>

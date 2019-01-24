@@ -14,7 +14,8 @@
       <hr>
     </div>
     <!--  -->
-    <div class="s-addr">
+    <div class="s-addr"
+         @click="handleOpen">
       <span>规格</span>
       <span>{{bookname}} 1个</span>
       <span>...</span>
@@ -37,21 +38,141 @@
       </div>
     </div>
     <!--  -->
+    <div v-show="isShow"
+         class="mask">
+      <div class="main">
+        <h5 style="text-align:end;color:#f00"
+            @click="handleClose">关闭 x</h5>
+        <div class="smcon">
+          <img class="smbook"
+               :src="pic"
+               alt=""> <span class="pricefont"><span>￥28.10</span><span>库存 500 件</span></span>
+        </div>
+        <h5>规格</h5>
+        <van-button type="default"
+                    @click="checkBook"
+                    :class="{debutton:isClass}">1984</van-button>
+        <h5>数量</h5>
+        <van-stepper v-model="value" />
+        <h5>其他服务</h5>
+
+        <van-checkbox v-model="checked">礼盒包装
+          <van-icon name="gift"
+                    color="#f00" />
+        </van-checkbox>
+        <p style="width:100%;height:50px"></p>
+      </div>
+      <div class="mbottom">
+        <button>加入购物车</button>
+        <button>立即购买</button>
+      </div>
+
+    </div>
+    <!--  -->
   </div>
 </template>
 
 <script>
+import pic0 from '../../assets/imgs/details/1-0.jpg';
 export default {
   name: 'spec',
   data () {
     return {
-      bookname: '1984'
+      pic: pic0,
+      bookname: '1984',
+      value: 1,
+      checked: false,
+      isClass: false,
+      isShow: false
     }
-  }
+  },
+  methods: {
+    checkBook () {
+      this.isClass = !this.isClass
+    },
+    handleClose () {
+      this.isShow = false
+    },
+    handleOpen () {
+      this.isShow = true
+    }
+  },
+
 }
 </script>
 
 <style scoped>
+/*  */
+.pricefont {
+  display: flex;
+  flex-direction: column;
+  font-size: 20px;
+  padding: 10px;
+}
+.pricefont span:first-child {
+  color: #ed1628;
+}
+.pricefont span:nth-child(2) {
+  font-size: 12px;
+  padding-left: 5px;
+  padding-top: 10px;
+}
+.smbook {
+  width: 80px;
+  height: 100px;
+  background: #999;
+}
+.smcon {
+  display: flex;
+  justify-content: end;
+}
+/*  */
+.mbottom {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  z-index: 101;
+  display: flex;
+  justify-content: space-around;
+}
+.mbottom button {
+  width: 50%;
+  height: 50px;
+  border: 0;
+  color: #fff;
+}
+.mbottom button:first-child {
+  background: #fa8030;
+}
+.mbottom button:last-child {
+  background: #ed1628;
+}
+.van-button {
+  border: 1px solid #999;
+}
+.debutton {
+  background-color: rgba(240, 33, 33, 0.74);
+  color: #fff;
+  border: 0;
+}
+.mask {
+  position: fixed;
+  bottom: 0;
+  z-index: 101;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+}
+.main {
+  width: 100%;
+  height: 60%;
+  position: absolute;
+  bottom: 0;
+  background: #fff;
+  padding: 0 30px;
+  overflow-y: scroll;
+}
+/*  */
 .msale,
 .sl-addr,
 .s-addr,

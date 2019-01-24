@@ -21,11 +21,11 @@ export default {
   },
   methods: {
     goTop () {
-      window.addEventListener('scroll', () => {
+      document.addEventListener('scroll', () => {
         let scrollTop = document.documentElement.scrollTop ||
           document.body.scrollTop;
         // console.log(scrollTop);
-        if (scrollTop >= 100) {
+        if (scrollTop >= 50) {
           // document.getElementsByClassName("toTop")[0].style.opacity = '1'
           $(".toTop").css("opacity", "1");
         } else {

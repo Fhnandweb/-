@@ -11,6 +11,9 @@ export default {
 </script>
 
 <style>
+/* #app {
+  height: 100%;
+} */
 html,
 body {
   /* background: #fafafa; */
